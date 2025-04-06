@@ -67,12 +67,12 @@ claude-rasp/
 
 1. Clonez ce dépôt sur votre Raspberry Pi :
    ```bash
-   git clone https://github.com/fcarriere427/claude-rasp.git ~/ClaudeRasp
+   git clone https://github.com/fcarriere427/claude-rasp.git ~/Claude-Rasp
    ```
 
 2. Exécutez le script d'installation :
    ```bash
-   cd ~/ClaudeRasp
+   cd ~/Claude-Rasp
    bash scripts/install.sh
    ```
 
