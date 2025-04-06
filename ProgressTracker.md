@@ -10,6 +10,7 @@
 | 06/04/2025 | Phase 0 | Création de la structure de répertoires | ✅ | Structure de répertoires créée selon l'architecture définie |
 | 06/04/2025 | Phase 0 | Configuration des outils de qualité de code | ✅ | Configuration de Black, isort, flake8 pour le backend et ESLint, Prettier pour le frontend |
 | 06/04/2025 | Phase 0 | Spécifications techniques | ✅ | Documentation des API, modèles de données et flux d'authentification
+| 06/04/2025 | Phase 0 | Intégration à la configuration Nginx existante | ✅ | Configuration de claude.letsq.xyz, adaptation des fichiers de configuration
 
 ## Phase 0: Préparation et setup (1-2 semaines)
 
@@ -31,8 +32,8 @@
 - [x] Création des maquettes UI
 
 ### 4. Configuration infrastructures communes
-- [ ] Setup Nginx comme reverse proxy
-- [ ] Configuration des certificats SSL
+- [x] Setup Nginx comme reverse proxy (intégré à la configuration existante de letsq.xyz)
+- [x] Configuration des certificats SSL (utilisation du certificat existant de letsq.xyz)
 - [ ] Mise en place de systemd pour les services
 - [ ] Scripts d'installation et de déploiement
 

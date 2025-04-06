@@ -93,8 +93,8 @@ print_success "Frontend installé et construit"
 
 # Configuration Nginx
 print_step "Configuration de Nginx"
-sudo cp "$CONFIG_DIR/nginx.conf" /etc/nginx/sites-available/claude-rasp.conf
-sudo ln -sf /etc/nginx/sites-available/claude-rasp.conf /etc/nginx/sites-enabled/
+sudo cp "$CONFIG_DIR/nginx.conf" /etc/nginx/sites-available/claude.letsq.xyz
+sudo ln -sf /etc/nginx/sites-available/claude.letsq.xyz /etc/nginx/sites-enabled/
 sudo nginx -t || print_error "Configuration Nginx invalide"
 sudo systemctl reload nginx
 print_success "Nginx configuré"

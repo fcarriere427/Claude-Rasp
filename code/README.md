@@ -82,7 +82,7 @@ claude-rasp/
 
 4. Accédez à l'application via votre navigateur :
    ```
-   https://claude-rasp.local/
+   https://claude.letsq.xyz/
    ```
    ou via l'adresse IP de votre Raspberry Pi
 
