@@ -1,0 +1,16 @@
+[Unit]
+Description=Claude API Application Backend
+After=network.target
+
+[Service]
+User=florian
+Group=florian
+WorkingDirectory=/home/florian/ClaudeRasp/backend
+ExecStart=/home/florian/ClaudeRasp/backend/.venv/bin/gunicorn -k uvicorn.workers.UvicornWorker -w 2 -b 0.0.0.0:8000 app.main:app
+Restart=on-failure
+RestartSec=5
+Environment="PATH=/home/florian/ClaudeRasp/backend/.venv/bin"
+EnvironmentFile=/home/florian/ClaudeRasp/backend/.env
+
+[Install]
+WantedBy=multi-user.target

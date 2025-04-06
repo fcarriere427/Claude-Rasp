@@ -1,0 +1,54 @@
+# Configuration des outils MCP (Multi-Claude Process)
+version: 1.0
+
+tools:
+  - name: brave_search
+    display_name: "Recherche Web"
+    description: "Effectue une recherche sur le web via l'API Brave Search"
+    enabled: true
+    config:
+      api_url: "https://api.search.brave.com/res/v1/web/search"
+      auth_header: "X-Subscription-Token"
+      # Utilise la variable d'environnement BRAVE_API_KEY
+    parameters:
+      - name: query
+        type: string
+        required: true
+        description: "Requête de recherche"
+      - name: count
+        type: integer
+        required: false
+        default: 5
+        description: "Nombre de résultats (max 20)"
+      - name: offset
+        type: integer
+        required: false
+        default: 0
+        description: "Décalage pour la pagination"
+
+  - name: local_search
+    display_name: "Recherche Locale"
+    description: "Recherche des lieux et commerces à proximité via l'API Brave Search"
+    enabled: true
+    config:
+      api_url: "https://api.search.brave.com/res/v1/places/search"
+      auth_header: "X-Subscription-Token"
+      # Utilise la variable d'environnement BRAVE_API_KEY
+    parameters:
+      - name: query
+        type: string
+        required: true
+        description: "Requête de recherche locale"
+      - name: count
+        type: integer
+        required: false
+        default: 5
+        description: "Nombre de résultats (max 20)"
+
+# Configuration globale
+settings:
+  log_requests: true
+  log_responses: true
+  timeout_seconds: 10
+  retry_count: 2
+  retry_delay_seconds: 1
