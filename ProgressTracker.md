@@ -12,6 +12,7 @@
 | 06/04/2025 | Phase 0 | Spécifications techniques | ✅ | Documentation des API, modèles de données et flux d'authentification
 | 06/04/2025 | Phase 0 | Intégration à la configuration Nginx existante | ✅ | Configuration de claude.letsq.xyz, adaptation des fichiers de configuration
 | 07/04/2025 | Phase 0 | Mise à jour des chemins d'installation | ✅ | Modification des chemins de "Claude-Rasp" à "claude-rasp" dans les fichiers de configuration
+| 07/04/2025 | Phase 0 | Création des scripts de déploiement et sauvegarde | ✅ | Ajout des scripts deploy.sh, backup.sh et setup_permissions.sh
 
 ## Phase 0: Préparation et setup (1-2 semaines)
 
@@ -35,8 +36,8 @@
 ### 4. Configuration infrastructures communes
 - [x] Setup Nginx comme reverse proxy (intégré à la configuration existante de letsq.xyz)
 - [x] Configuration des certificats SSL (utilisation du certificat existant de letsq.xyz)
-- [ ] Mise en place de systemd pour les services
-- [ ] Scripts d'installation et de déploiement
+- [x] Mise en place de systemd pour les services
+- [x] Scripts d'installation et de déploiement
 
 ## Phase 1: MVP - Fonctionnalités essentielles (3-4 semaines)
 *À démarrer après la complétion de la Phase 0*
