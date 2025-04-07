@@ -13,6 +13,7 @@
 | 06/04/2025 | Phase 0 | Intégration à la configuration Nginx existante | ✅ | Configuration de claude.letsq.xyz, adaptation des fichiers de configuration
 | 07/04/2025 | Phase 0 | Mise à jour des chemins d'installation | ✅ | Modification des chemins de "Claude-Rasp" à "claude-rasp" dans les fichiers de configuration
 | 07/04/2025 | Phase 0 | Création des scripts de déploiement et sauvegarde | ✅ | Ajout des scripts deploy.sh, backup.sh et setup_permissions.sh
+| 07/04/2025 | Phase 0 | Documentation des scripts | ✅ | Création d'un guide d'utilisation des scripts (scripts-guide.md)
 
 ## Phase 0: Préparation et setup (1-2 semaines)
 
