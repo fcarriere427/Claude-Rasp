@@ -32,9 +32,10 @@ fi
 
 # Définition des chemins
 INSTALL_DIR="$HOME/claude-rasp"
-BACKEND_DIR="$INSTALL_DIR/backend"
-FRONTEND_DIR="$INSTALL_DIR/frontend"
-CONFIG_DIR="$INSTALL_DIR/config"
+CODE_DIR="$INSTALL_DIR/code"
+BACKEND_DIR="$CODE_DIR/backend"
+FRONTEND_DIR="$CODE_DIR/frontend"
+CONFIG_DIR="$CODE_DIR/config"
 STORAGE_DIR="$INSTALL_DIR/storage"
 SYSTEMD_DIR="/etc/systemd/system"
 
