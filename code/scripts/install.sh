@@ -61,7 +61,14 @@ source .venv/bin/activate
 
 # Installer Poetry si nécessaire
 if ! command -v poetry &> /dev/null; then
-    pip install poetry
+    echo "Poetry n'est pas installé. Installation globale de Poetry..."
+    curl -sSL https://install.python-poetry.org | python3 -
+    export PATH="$HOME/.local/bin:$PATH"
+fi
+
+# Vérifier que Poetry est bien installé
+if ! command -v poetry &> /dev/null; then
+    print_error "Impossible d'installer ou de trouver Poetry. Veuillez l'installer manuellement."
 fi
 
 # Installer les dépendances

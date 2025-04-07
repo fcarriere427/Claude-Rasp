@@ -15,6 +15,7 @@
 | 07/04/2025 | Phase 0 | Création des scripts de déploiement et sauvegarde | ✅ | Ajout des scripts deploy.sh, backup.sh et setup_permissions.sh
 | 07/04/2025 | Phase 0 | Documentation des scripts | ✅ | Création d'un guide d'utilisation des scripts (scripts-guide.md)
 | 07/04/2025 | Phase 0 | Correction des chemins dans les scripts | ✅ | Correction du script install.sh pour respecter la structure de répertoires avec sous-dossier code
+| 07/04/2025 | Phase 1 | Correction des erreurs d'installation | ✅ | Correction de l'installation de Poetry et ajout de la structure minimale du frontend
 
 ## Phase 0: Préparation et setup (1-2 semaines)
 
@@ -42,7 +43,29 @@
 - [x] Scripts d'installation et de déploiement
 
 ## Phase 1: MVP - Fonctionnalités essentielles (3-4 semaines)
-*À démarrer après la complétion de la Phase 0*
+
+### 1. Frontend - Interface utilisateur minimaliste
+- [x] Structure Vue.js de base
+- [x] Interface de login/password
+- [x] Interface de conversation
+- [x] Interface de monitoring des coûts
+- [x] Interface de paramètres
+
+### 2. Backend - Fonctionnalités de base
+- [ ] Implémentation de l'API REST avec FastAPI
+- [ ] Système d'authentification avec JWT
+- [ ] Intégration avec l'API Claude
+- [ ] Modèles de base de données essentiels
+
+### 3. Système MCP v1
+- [ ] Parser de configuration YAML pour les outils MCP
+- [ ] Intégration avec Brave Search API
+- [ ] Routage des appels aux outils
+
+### 4. Monitoring simple
+- [ ] Comptage des tokens et conversion en coûts
+- [ ] Stockage des métriques d'utilisation
+- [ ] Implémentation du kill switch
 
 ## Phase 2: Amélioration du monitoring et des limites (2-3 semaines)
 *À démarrer après la complétion de la Phase 1*
