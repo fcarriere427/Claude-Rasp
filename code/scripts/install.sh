@@ -31,7 +31,7 @@ if [ "$EUID" -eq 0 ]; then
 fi
 
 # Définition des chemins
-INSTALL_DIR="$HOME/Claude-Rasp"
+INSTALL_DIR="$HOME/claude-rasp"
 BACKEND_DIR="$INSTALL_DIR/backend"
 FRONTEND_DIR="$INSTALL_DIR/frontend"
 CONFIG_DIR="$INSTALL_DIR/config"

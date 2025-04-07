@@ -11,6 +11,7 @@
 | 06/04/2025 | Phase 0 | Configuration des outils de qualité de code | ✅ | Configuration de Black, isort, flake8 pour le backend et ESLint, Prettier pour le frontend |
 | 06/04/2025 | Phase 0 | Spécifications techniques | ✅ | Documentation des API, modèles de données et flux d'authentification
 | 06/04/2025 | Phase 0 | Intégration à la configuration Nginx existante | ✅ | Configuration de claude.letsq.xyz, adaptation des fichiers de configuration
+| 07/04/2025 | Phase 0 | Mise à jour des chemins d'installation | ✅ | Modification des chemins de "Claude-Rasp" à "claude-rasp" dans les fichiers de configuration
 
 ## Phase 0: Préparation et setup (1-2 semaines)
 

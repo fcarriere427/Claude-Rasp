@@ -5,12 +5,12 @@ After=network.target
 [Service]
 User=florian
 Group=florian
-WorkingDirectory=/home/florian/Claude-Rasp/code/backend
-ExecStart=/home/florian/Claude-Rasp/code/backend/.venv/bin/gunicorn -k uvicorn.workers.UvicornWorker -w 2 -b 0.0.0.0:8000 app.main:app
+WorkingDirectory=/home/florian/claude-rasp/code/backend
+ExecStart=/home/florian/claude-rasp/code/backend/.venv/bin/gunicorn -k uvicorn.workers.UvicornWorker -w 2 -b 0.0.0.0:8000 app.main:app
 Restart=on-failure
 RestartSec=5
-Environment="PATH=/home/florian/Claude-Rasp/code/backend/.venv/bin"
-EnvironmentFile=/home/florian/Claude-Rasp/code/backend/.env
+Environment="PATH=/home/florian/claude-rasp/code/backend/.venv/bin"
+EnvironmentFile=/home/florian/claude-rasp/code/backend/.env
 
 [Install]
 WantedBy=multi-user.target
