@@ -59,20 +59,11 @@ cd "$BACKEND_DIR" || print_error "Impossible d'accéder au répertoire backend"
 python3 -m venv .venv
 source .venv/bin/activate
 
-# Installer Poetry si nécessaire
-if ! command -v poetry &> /dev/null; then
-    echo "Poetry n'est pas installé. Installation globale de Poetry..."
-    curl -sSL https://install.python-poetry.org | python3 -
-    export PATH="$HOME/.local/bin:$PATH"
-fi
+# Installer pip
+pip install --upgrade pip
 
-# Vérifier que Poetry est bien installé
-if ! command -v poetry &> /dev/null; then
-    print_error "Impossible d'installer ou de trouver Poetry. Veuillez l'installer manuellement."
-fi
-
-# Installer les dépendances
-poetry install
+# Installer les dépendances directement avec pip plutôt qu'avec Poetry
+pip install fastapi uvicorn gunicorn sqlalchemy pydantic alembic python-jose[cryptography] passlib[bcrypt] httpx python-multipart pyyaml
 
 # Créer le fichier .env à partir de l'exemple
 if [ ! -f .env ]; then
@@ -98,6 +89,12 @@ fi
 # Construire le frontend
 npm run build
 print_success "Frontend installé et construit"
+
+# Copier le frontend vers /var/www
+sudo mkdir -p /var/www/claude.letsq.xyz
+sudo cp -r dist/* /var/www/claude.letsq.xyz/
+sudo chown -R www-data:www-data /var/www/claude.letsq.xyz/
+print_success "Frontend déployé vers /var/www/claude.letsq.xyz"
 
 # Configuration Nginx
 print_step "Configuration de Nginx"
