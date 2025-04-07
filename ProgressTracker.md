@@ -17,6 +17,7 @@
 | 07/04/2025 | Phase 0 | Correction des chemins dans les scripts | ✅ | Correction du script install.sh pour respecter la structure de répertoires avec sous-dossier code
 | 07/04/2025 | Phase 1 | Correction des erreurs d'installation | ✅ | Correction de l'installation de Poetry et ajout de la structure minimale du frontend
 | 07/04/2025 | Phase 1 | Correction des erreurs de déploiement | ✅ | Résolution de l'erreur ReferenceError dans le frontend et création d'un script de déploiement pour le frontend
+| 07/04/2025 | Phase 1 | Mise à jour de la documentation | ✅ | Mise à jour du document d'architecture pour refléter la nouvelle structure et les changements techniques
 
 ## Phase 0: Préparation et setup (1-2 semaines)
 

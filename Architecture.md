@@ -61,7 +61,7 @@ L'application suit une architecture classique client-serveur avec les composants
 - **Process Manager**: Systemd pour les services
 
 ### 2.5 Outils de développement
-- **Gestion des dépendances**: Poetry
+- **Gestion des dépendances**: pip (pour simplicité d'utilisation sur Raspberry Pi)
 - **Linting & Formatting**: Black, isort, flake8
 - **Testing**: Pytest avec pytest-cov pour la couverture
 - **CI**: GitHub Actions (tests automatisés)
@@ -70,76 +70,58 @@ L'application suit une architecture classique client-serveur avec les composants
 
 ```
 claude-rasp/
-├── .github/                    # CI/CD configurations
-├── docker/                     # Fichiers Docker (optionnel)
-├── docs/                       # Documentation
-├── frontend/                   # Application Vue.js
-│   ├── public/
-│   ├── src/
-│   │   ├── assets/
-│   │   ├── components/
-│   │   │   ├── conversation/   # Composants de conversation
-│   │   │   ├── auth/           # Composants d'authentification
-│   │   │   ├── dashboard/      # Composants de monitoring
-│   │   │   └── admin/          # Composants d'administration (V2)
-│   │   ├── views/
-│   │   ├── router/
-│   │   ├── store/
-│   │   ├── services/           # Services API
-│   │   └── utils/
-│   ├── .env.example
-│   ├── package.json
-│   └── vite.config.js
-├── backend/                    # Application FastAPI
-│   ├── alembic/                # Migrations DB
-│   ├── app/
-│   │   ├── api/                # Endpoints API
-│   │   │   ├── v1/
-│   │   │   │   ├── auth.py     # Authentification
-│   │   │   │   ├── chat.py     # Conversations
-│   │   │   │   ├── mcp.py      # Gestion MCP
-│   │   │   │   └── monitor.py  # Monitoring
-│   │   │   └── v2/             # Endpoints V2 (futur)
-│   │   ├── core/               # Configuration et utilitaires
-│   │   │   ├── config.py
-│   │   │   ├── security.py
-│   │   │   └── logging.py
-│   │   ├── db/                 # Gestion DB
-│   │   │   ├── base.py
-│   │   │   ├── session.py
-│   │   │   └── init_db.py
-│   │   ├── models/             # Modèles SQLAlchemy
-│   │   │   ├── user.py
-│   │   │   ├── conversation.py
-│   │   │   ├── message.py
-│   │   │   └── usage.py
-│   │   ├── schemas/            # Schémas Pydantic
-│   │   ├── services/           # Services métier
-│   │   │   ├── claude_api.py   # Client API Claude
-│   │   │   ├── mcp_service.py  # Service MCP
-│   │   │   ├── cost_tracker.py # Tracking des coûts
-│   │   │   └── limit_service.py# Gestion des limites
-│   │   ├── utils/              # Utilitaires
-│   │   └── main.py             # Point d'entrée
-│   ├── tests/                  # Tests unitaires et intégration
-│   ├── .env.example
-│   ├── pyproject.toml
-│   └── poetry.lock
-├── config/                     # Configuration de l'application
-│   ├── mcp_config.yaml         # Configuration MCP (V1)
-│   ├── nginx.conf              # Configuration Nginx
-│   └── systemd/                # Services systemd
-├── scripts/                    # Scripts utilitaires
-│   ├── install.sh              # Installation des dépendances
-│   ├── setup_db.sh             # Initialisation de la DB
-│   └── backup.sh               # Sauvegarde des données
-├── storage/                    # Données persistantes
-│   ├── database/               # Fichiers SQLite
-│   ├── logs/                   # Logs applicatifs
-│   └── backups/                # Sauvegardes
-├── .gitignore
-├── LICENSE
-└── README.md
+├── code/                        # Code source de l'application
+│   ├── docs/                    # Documentation
+│   ├── frontend/                # Application Vue.js
+│   │   ├── public/
+│   │   ├── src/
+│   │   │   ├── assets/          # Ressources (images, etc.)
+│   │   │   ├── components/      # Composants Vue
+│   │   │   │   ├── conversation/ # Composants de conversation
+│   │   │   │   ├── auth/        # Composants d'authentification
+│   │   │   │   ├── dashboard/   # Composants de monitoring
+│   │   │   │   └── admin/       # Composants d'administration (V2)
+│   │   │   ├── views/           # Pages Vue
+│   │   │   ├── router/          # Configuration des routes
+│   │   │   ├── store/           # Gestion de l'état (Pinia)
+│   │   │   ├── services/        # Services API
+│   │   │   └── utils/           # Utilitaires
+│   │   ├── .env.example
+│   │   ├── package.json
+│   │   └── vue.config.js        # Configuration Vue
+│   ├── backend/                 # Application FastAPI
+│   │   ├── app/
+│   │   │   ├── api/             # Endpoints API
+│   │   │   │   ├── v1/
+│   │   │   │   │   ├── auth.py  # Authentification
+│   │   │   │   │   ├── chat.py  # Conversations
+│   │   │   │   │   ├── mcp.py   # Gestion MCP
+│   │   │   │   │   └── monitor.py # Monitoring
+│   │   │   │   └── v2/          # Endpoints V2 (futur)
+│   │   │   ├── core/            # Configuration et utilitaires
+│   │   │   ├── db/              # Gestion base de données
+│   │   │   ├── models/          # Modèles SQLAlchemy
+│   │   │   ├── schemas/         # Schémas Pydantic
+│   │   │   ├── services/        # Services métier
+│   │   │   ├── utils/           # Utilitaires
+│   │   │   └── main.py          # Point d'entrée
+│   │   ├── tests/               # Tests unitaires et intégration
+│   │   ├── .env.example
+│   │   └── requirements.txt     # Dépendances Python
+│   ├── config/                  # Configuration de l'application
+│   │   ├── mcp_config.yaml      # Configuration MCP (V1)
+│   │   ├── nginx.conf           # Configuration Nginx
+│   │   └── systemd/             # Services systemd
+│   └── scripts/                 # Scripts utilitaires
+│       ├── install.sh           # Installation
+│       ├── deploy.sh            # Déploiement complet
+│       ├── deploy_frontend.sh   # Déploiement frontend uniquement
+│       ├── backup.sh            # Sauvegarde et restauration
+│       └── setup_permissions.sh # Configuration des permissions
+└── storage/                     # Données persistantes
+    ├── database/                # Fichiers SQLite
+    ├── logs/                    # Logs applicatifs
+    └── backups/                 # Sauvegardes
 ```
 
 ## 4. Modèles de données
@@ -421,16 +403,17 @@ class UserLimit(Base):
 3. Installation des dépendances système (Python, Node.js, etc.)
 4. Installation du code source via Git
 5. Configuration des variables d'environnement
-6. Installation des dépendances Python (Poetry)
+6. Installation des dépendances Python avec pip
 7. Installation des dépendances Frontend (npm)
 8. Configuration Nginx et Let's Encrypt
 9. Configuration des services systemd
 10. Initialisation de la base de données
 
 ### 8.2 Mise à jour
-- Script de mise à jour automatisé
+- Script de mise à jour automatisé (deploy.sh)
 - Sauvegarde automatique avant mise à jour
 - Mécanisme de rollback en cas d'échec
+- Déploiement séparé du frontend si nécessaire (deploy_frontend.sh)
 - Migration de schéma DB avec Alembic
 
 ### 8.3 Sauvegarde et restauration

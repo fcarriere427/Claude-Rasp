@@ -1,4 +1,19 @@
-# Guide d'utilisation des scripts
+### Erreurs de compilation du frontend
+
+Si vous rencontrez des erreurs lors de la compilation ou de l'exécution du frontend :
+
+1. Vérifiez les erreurs dans la console du navigateur (F12)
+
+2. Essayez de nettoyer le cache et reconstruire le frontend :
+   ```bash
+   cd ~/claude-rasp/code/frontend
+   rm -rf node_modules
+   rm -rf dist
+   npm install
+   ./deploy_frontend.sh
+   ```
+
+3. Si vous voyez une erreur "ReferenceError: process is not defined", vérifiez que le fichier vue.config.js existe dans le répertoire frontend# Guide d'utilisation des scripts
 # Application Claude API sur Raspberry Pi
 
 Ce document explique comment et quand utiliser les différents scripts disponibles dans le projet. Ces scripts sont conçus pour faciliter l'installation, le déploiement, la maintenance et la sauvegarde de l'application.
@@ -19,6 +34,7 @@ Voici les scripts disponibles et leur fonction principale :
 |--------|-------------|-------------|
 | `install.sh` | code/scripts/ | Installation initiale de l'application |
 | `deploy.sh` | code/scripts/ | Déploiement et mise à jour de l'application |
+| `deploy_frontend.sh` | code/scripts/ | Déploiement du frontend uniquement |
 | `backup.sh` | code/scripts/ | Sauvegarde et restauration des données |
 | `setup_permissions.sh` | code/scripts/ | Configuration des permissions pour les scripts |
 
@@ -58,12 +74,11 @@ Utilisez ce script lorsque vous :
 
 ### Ce que fait `install.sh`
 
-- Crée la structure de répertoires nécessaire
-- Clone le dépôt Git à l'emplacement spécifié
-- Configure l'environnement virtuel Python pour le backend
-- Installe les dépendances avec Poetry
+- Met en place l'environnement Python avec pip (pas Poetry)
+- Installe les dépendances backend directement via pip
 - Configure les fichiers d'environnement à partir des exemples
 - Installe les dépendances du frontend et construit l'application
+- Déploie les fichiers du frontend vers /var/www/claude.letsq.xyz
 - Configure Nginx
 - Configure et démarre le service systemd
 
@@ -97,6 +112,33 @@ Utilisez ce script lorsque vous :
 - Exécute les migrations de base de données si nécessaire
 - Reconstruit le frontend
 - Redémarre les services
+
+## Déploiement du frontend
+
+### Quand utiliser `deploy_frontend.sh`
+
+Utilisez ce script lorsque vous :
+- Avez modifié uniquement le code frontend (sans changements backend)
+- Souhaitez mettre à jour l'interface utilisateur rapidement
+
+### Comment utiliser `deploy_frontend.sh`
+
+1. Accédez au répertoire de scripts
+   ```bash
+   cd ~/claude-rasp/code/scripts
+   ```
+
+2. Exécutez le script de déploiement frontend
+   ```bash
+   ./deploy_frontend.sh
+   ```
+
+### Ce que fait `deploy_frontend.sh`
+
+- Construit le frontend avec npm run build
+- Copie les fichiers compilés vers /var/www/claude.letsq.xyz
+- Configure les permissions appropriées
+- Recharge la configuration Nginx
 
 ## Sauvegarde et restauration
 
@@ -175,6 +217,24 @@ Si le service systemd ne démarre pas correctement :
    ```bash
    sudo systemctl restart claude-rasp-backend.service
    ```
+
+### Erreurs de compilation du frontend
+
+Si vous rencontrez des erreurs lors de la compilation ou de l'exécution du frontend :
+
+1. Vérifiez les erreurs dans la console du navigateur (F12)
+
+2. Essayez de nettoyer le cache et reconstruire le frontend :
+   ```bash
+   cd ~/claude-rasp/code/frontend
+   rm -rf node_modules
+   rm -rf dist
+   npm install
+   cd ~/claude-rasp/code/scripts
+   ./deploy_frontend.sh
+   ```
+
+3. Si vous voyez une erreur "ReferenceError: process is not defined", vérifiez que le fichier vue.config.js existe dans le répertoire frontend
 
 ### Restauration en cas d'échec de déploiement
 
