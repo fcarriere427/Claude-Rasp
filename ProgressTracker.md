@@ -10,6 +10,7 @@
 | 06/04/2025 | Phase 0 | Création de la structure de répertoires | ✅ | Structure de répertoires créée selon l'architecture définie |
 | 06/04/2025 | Phase 0 | Configuration des outils de qualité de code | ✅ | Configuration de Black, isort, flake8 pour le backend et ESLint, Prettier pour le frontend |
 | 06/04/2025 | Phase 0 | Spécifications techniques | ✅ | Documentation des API, modèles de données et flux d'authentification |
+| 12/04/2025 | Phase 0 | Correction du déploiement du favicon | ✅ | Modification du script d'installation et de la configuration Vue.js pour assurer l'inclusion du favicon |
 | 06/04/2025 | Phase 0 | Création de la documentation détaillée | ✅ | Documentation des API, modèles de données, flux d'authentification et maquettes UI |
 | 06/04/2025 | Phase 0 | Configuration de base du backend | ✅ | Structure FastAPI, dépendances, configuration de base |
 | 06/04/2025 | Phase 0 | Configuration de base du frontend | ✅ | Structure Vue.js, configuration ESLint et Prettier | 
