@@ -1,4 +1,4 @@
-# Application Claude API sur Raspberry Pi
+# My Own Personal Claude
 
 Ce projet est une application web auto-hébergée permettant d'interagir avec l'API Claude (3.7 Sonnet) depuis n'importe quel navigateur, avec une gestion des coûts et un système d'authentification sécurisé.
 

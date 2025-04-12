@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(
-    title="Claude API Application",
+    title="My Own Personal Claude",
     description="Application web pour interagir avec l'API Claude sur Raspberry Pi",
     version="0.1.0",
 )
@@ -26,7 +26,7 @@ app.add_middleware(
 
 @app.get("/")
 async def root():
-    return {"message": "Claude API Application Backend"}
+    return {"message": "My Own Personal Claude Backend"}
 
 
 @app.get("/health")

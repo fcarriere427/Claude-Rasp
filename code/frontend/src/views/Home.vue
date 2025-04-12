@@ -1,7 +1,7 @@
 <template>
   <div class="home-container">
     <header class="header">
-      <h1>Claude API Application</h1>
+      <h1>My Own Personal Claude</h1>
       <div class="user-info" v-if="isLoggedIn">
         <span>{{ userInfo.username }}</span>
         <button @click="logout" class="logout-button">
@@ -38,7 +38,7 @@
       </div>
 
       <div v-else class="welcome">
-        <h2>Bienvenue sur l'Application Claude API</h2>
+        <h2>Bienvenue sur My Own Personal Claude</h2>
         <p>Connectez-vous pour accéder à l'interface</p>
         <router-link to="/login" class="button">
           Se connecter
@@ -47,7 +47,7 @@
     </main>
 
     <footer class="footer">
-      <p>Claude API Application v0.1.0</p>
+      <p>My Own Personal Claude v0.1.0</p>
     </footer>
   </div>
 </template>

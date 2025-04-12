@@ -1,7 +1,7 @@
 <template>
   <div class="login-container">
     <div class="login-card">
-      <h1 class="login-title">Claude API</h1>
+      <h1 class="login-title">My Own Personal Claude</h1>
       <form @submit.prevent="login" class="login-form">
         <div class="form-group">
           <label for="username">Nom d'utilisateur</label>
