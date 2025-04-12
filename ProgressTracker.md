@@ -10,6 +10,7 @@
 | 06/04/2025 | Phase 0 | Création de la structure de répertoires | ✅ | Structure de répertoires créée selon l'architecture définie |
 | 06/04/2025 | Phase 0 | Configuration des outils de qualité de code | ✅ | Configuration de Black, isort, flake8 pour le backend et ESLint, Prettier pour le frontend |
 | 06/04/2025 | Phase 0 | Spécifications techniques | ✅ | Documentation des API, modèles de données et flux d'authentification |
+| 12/04/2025 | Phase 1 | Implémentation du module d'authentification | ✅ | Création des routes d'authentification, modèles, schémas et services |
 | 12/04/2025 | Phase 0 | Correction du déploiement du favicon | ✅ | Modification du script d'installation et de la configuration Vue.js pour assurer l'inclusion du favicon |
 | 12/04/2025 | Phase 0 | Changement du nom de l'application | ✅ | Renommage de "Claude API Application" en "My Own Personal Claude" dans tous les fichiers concernés |
 | 12/04/2025 | Phase 0 | Correction des scripts de déploiement | ✅ | Mise à jour des scripts pour copier correctement les fichiers frontend vers le répertoire servi par Nginx |
@@ -23,6 +24,7 @@
 | 07/04/2025 | Phase 0 | Préparation des fichiers .env | ✅ | Création des templates .env pour backend et frontend |
 | 12/04/2025 | Phase 1 | Évaluation de l'avancement | ✅ | Mise à jour du suivi de projet pour refléter l'état réel |
 | 12/04/2025 | Phase 1 | Simplification de la structure | ✅ | Suppression du fichier pyproject.toml et utilisation exclusive des fichiers requirements.txt |
+| 12/04/2025 | Phase 1 | Implémentation de l'authentification | ✅ | Création des modèles, schémas, services et API pour l'authentification |
 
 ## Phase 0: Préparation et setup (1-2 semaines) - **TERMINÉE**
 
@@ -53,12 +55,15 @@
 
 ### 1. Backend - Fonctionnalités de base
 - [x] Structure de l'application FastAPI
-- [x] Définition des routes API (commentées dans main.py)
-- [ ] Implémentation des routers API (auth, chat, mcp, monitor)
-- [ ] Implémentation des modèles SQLAlchemy
-- [ ] Système d'authentification avec JWT
+- [x] Définition des routes API
+- [x] Implémentation du router d'authentification
+- [x] Modèles SQLAlchemy de base (User, Conversation, Message, UsageRecord)
+- [x] Système d'authentification avec JWT
+- [ ] Implémentation du router de conversations
 - [ ] Intégration avec l'API Claude
-- [ ] Implémentation des migrations de base de données
+- [ ] Implémentation du router MCP
+- [ ] Implémentation du router de monitoring
+- [ ] Initialisation et migration de la base de données
 
 ### 2. Frontend - Interface utilisateur minimaliste
 - [x] Structure Vue.js de base
@@ -99,6 +104,7 @@
 
 ## Notes et décisions importantes
 - La Phase 0 (préparation et setup) est terminée. Toute l'infrastructure nécessaire est en place.
-- Le projet commence maintenant la Phase 1 (MVP) avec un focus sur l'implémentation du backend.
-- Les prochaines étapes consistent à implémenter les routers API basés sur les spécifications détaillées.
+- Le projet est maintenant dans la Phase 1 (MVP) avec un focus sur l'implémentation du backend.
+- Le système d'authentification est maintenant implémenté avec JWT.
+- Les prochaines étapes consistent à implémenter les routes de conversation et l'intégration avec l'API Claude.
 - Les fichiers de configuration et scripts d'installation sont prêts à être utilisés pour les tests de déploiement.
