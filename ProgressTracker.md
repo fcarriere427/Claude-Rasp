@@ -9,17 +9,18 @@
 | 06/04/2025 | Phase 0 | Installation des outils de développement | ✅ | Python, Node.js, Git, Nginx et autres outils déjà installés |
 | 06/04/2025 | Phase 0 | Création de la structure de répertoires | ✅ | Structure de répertoires créée selon l'architecture définie |
 | 06/04/2025 | Phase 0 | Configuration des outils de qualité de code | ✅ | Configuration de Black, isort, flake8 pour le backend et ESLint, Prettier pour le frontend |
-| 06/04/2025 | Phase 0 | Spécifications techniques | ✅ | Documentation des API, modèles de données et flux d'authentification
-| 06/04/2025 | Phase 0 | Intégration à la configuration Nginx existante | ✅ | Configuration de claude.letsq.xyz, adaptation des fichiers de configuration
-| 07/04/2025 | Phase 0 | Mise à jour des chemins d'installation | ✅ | Modification des chemins de "Claude-Rasp" à "claude-rasp" dans les fichiers de configuration
-| 07/04/2025 | Phase 0 | Création des scripts de déploiement et sauvegarde | ✅ | Ajout des scripts deploy.sh, backup.sh et setup_permissions.sh
-| 07/04/2025 | Phase 0 | Documentation des scripts | ✅ | Création d'un guide d'utilisation des scripts (scripts-guide.md)
-| 07/04/2025 | Phase 0 | Correction des chemins dans les scripts | ✅ | Correction du script install.sh pour respecter la structure de répertoires avec sous-dossier code
-| 07/04/2025 | Phase 1 | Correction des erreurs d'installation | ✅ | Correction de l'installation de Poetry et ajout de la structure minimale du frontend
-| 07/04/2025 | Phase 1 | Correction des erreurs de déploiement | ✅ | Résolution de l'erreur ReferenceError dans le frontend et création d'un script de déploiement pour le frontend
-| 07/04/2025 | Phase 1 | Mise à jour de la documentation | ✅ | Mise à jour du document d'architecture pour refléter la nouvelle structure et les changements techniques
+| 06/04/2025 | Phase 0 | Spécifications techniques | ✅ | Documentation des API, modèles de données et flux d'authentification |
+| 06/04/2025 | Phase 0 | Création de la documentation détaillée | ✅ | Documentation des API, modèles de données, flux d'authentification et maquettes UI |
+| 06/04/2025 | Phase 0 | Configuration de base du backend | ✅ | Structure FastAPI, dépendances, configuration de base |
+| 06/04/2025 | Phase 0 | Configuration de base du frontend | ✅ | Structure Vue.js, configuration ESLint et Prettier | 
+| 07/04/2025 | Phase 0 | Configuration Nginx | ✅ | Création du fichier de configuration Nginx |
+| 07/04/2025 | Phase 0 | Configuration systemd | ✅ | Création du service systemd pour le backend |
+| 07/04/2025 | Phase 0 | Script d'installation | ✅ | Création du script d'installation complet |
+| 07/04/2025 | Phase 0 | Configuration MCP | ✅ | Configuration YAML pour les outils MCP (Brave Search) |
+| 07/04/2025 | Phase 0 | Préparation des fichiers .env | ✅ | Création des templates .env pour backend et frontend |
+| 12/04/2025 | Phase 1 | Évaluation de l'avancement | ✅ | Mise à jour du suivi de projet pour refléter l'état réel |
 
-## Phase 0: Préparation et setup (1-2 semaines)
+## Phase 0: Préparation et setup (1-2 semaines) - **TERMINÉE**
 
 ### 1. Préparation du Raspberry Pi
 - [x] Installation de Raspberry Pi OS (64-bit)
@@ -39,35 +40,46 @@
 - [x] Création des maquettes UI
 
 ### 4. Configuration infrastructures communes
-- [x] Setup Nginx comme reverse proxy (intégré à la configuration existante de letsq.xyz)
-- [x] Configuration des certificats SSL (utilisation du certificat existant de letsq.xyz)
+- [x] Setup Nginx comme reverse proxy
+- [x] Configuration des certificats SSL
 - [x] Mise en place de systemd pour les services
 - [x] Scripts d'installation et de déploiement
 
-## Phase 1: MVP - Fonctionnalités essentielles (3-4 semaines)
+## Phase 1: MVP - Fonctionnalités essentielles (3-4 semaines) - **EN COURS**
 
-### 1. Frontend - Interface utilisateur minimaliste
-- [x] Structure Vue.js de base
-- [x] Interface de login/password
-- [x] Interface de conversation
-- [x] Interface de monitoring des coûts
-- [x] Interface de paramètres
-
-### 2. Backend - Fonctionnalités de base
-- [ ] Implémentation de l'API REST avec FastAPI
+### 1. Backend - Fonctionnalités de base
+- [x] Structure de l'application FastAPI
+- [x] Définition des routes API (commentées dans main.py)
+- [ ] Implémentation des routers API (auth, chat, mcp, monitor)
+- [ ] Implémentation des modèles SQLAlchemy
 - [ ] Système d'authentification avec JWT
 - [ ] Intégration avec l'API Claude
-- [ ] Modèles de base de données essentiels
+- [ ] Implémentation des migrations de base de données
+
+### 2. Frontend - Interface utilisateur minimaliste
+- [x] Structure Vue.js de base
+- [x] Configuration du projet (package.json, ESLint, Prettier)
+- [ ] Implémentation des composants UI selon les maquettes
+- [ ] Interface de login/password
+- [ ] Interface de conversation
+- [ ] Affichage des tokens utilisés
 
 ### 3. Système MCP v1
-- [ ] Parser de configuration YAML pour les outils MCP
+- [x] Configuration YAML pour les outils MCP
+- [ ] Implémentation du parser de configuration
 - [ ] Intégration avec Brave Search API
 - [ ] Routage des appels aux outils
 
 ### 4. Monitoring simple
-- [ ] Comptage des tokens et conversion en coûts
-- [ ] Stockage des métriques d'utilisation
+- [ ] Implémentation du comptage des tokens
+- [ ] Conversion en coûts
+- [ ] Stockage des métriques
 - [ ] Implémentation du kill switch
+
+### 5. Tests et déploiement
+- [ ] Tests unitaires des fonctionnalités critiques
+- [ ] Tests de déploiement sur Raspberry Pi
+- [ ] Documentation utilisateur pour le MVP
 
 ## Phase 2: Amélioration du monitoring et des limites (2-3 semaines)
 *À démarrer après la complétion de la Phase 1*
@@ -82,4 +94,7 @@
 *À démarrer après la complétion de la Phase 4*
 
 ## Notes et décisions importantes
-- *Cette section servira à documenter les décisions importantes prises pendant le développement*
+- La Phase 0 (préparation et setup) est terminée. Toute l'infrastructure nécessaire est en place.
+- Le projet commence maintenant la Phase 1 (MVP) avec un focus sur l'implémentation du backend.
+- Les prochaines étapes consistent à implémenter les routers API basés sur les spécifications détaillées.
+- Les fichiers de configuration et scripts d'installation sont prêts à être utilisés pour les tests de déploiement.

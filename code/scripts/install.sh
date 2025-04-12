@@ -25,6 +25,17 @@ print_error() {
     exit 1
 }
 
+# Analyser les arguments
+DEV_ENVIRONMENT=false
+for arg in "$@"; do
+  case $arg in
+    --dev)
+      DEV_ENVIRONMENT=true
+      shift
+      ;;
+  esac
+done
+
 # Vérifier si le script est exécuté en tant que root
 if [ "$EUID" -eq 0 ]; then
   print_error "Ce script ne doit pas être exécuté en tant que root. Utilisez votre utilisateur normal."
@@ -59,11 +70,28 @@ cd "$BACKEND_DIR" || print_error "Impossible d'accéder au répertoire backend"
 python3 -m venv .venv
 source .venv/bin/activate
 
-# Installer pip
+# Mettre à jour pip
 pip install --upgrade pip
 
-# Installer les dépendances directement avec pip plutôt qu'avec Poetry
-pip install fastapi uvicorn gunicorn sqlalchemy pydantic alembic python-jose[cryptography] passlib[bcrypt] httpx python-multipart pyyaml
+# Installer les dépendances de production
+if [ -f requirements.txt ]; then
+    pip install -r requirements.txt
+else
+    # Installation directe des dépendances si le fichier requirements.txt n'existe pas
+    pip install fastapi uvicorn gunicorn sqlalchemy pydantic alembic python-jose[cryptography] passlib[bcrypt] httpx python-multipart pyyaml
+fi
+
+# Installer les dépendances de développement si l'option --dev est fournie
+if [ "$DEV_ENVIRONMENT" = "true" ]; then
+    print_step "Installation des outils de développement"
+    if [ -f requirements-dev.txt ]; then
+        pip install -r requirements-dev.txt
+    else
+        # Installation directe des dépendances de développement
+        pip install pytest pytest-cov black isort flake8
+    fi
+    print_success "Outils de développement installés"
+fi
 
 # Créer le fichier .env à partir de l'exemple
 if [ ! -f .env ]; then
@@ -115,4 +143,12 @@ print_success "Services systemd configurés"
 print_step "Installation terminée!"
 echo -e "${GREEN}L'application Claude API est maintenant installée sur votre Raspberry Pi.${NC}"
 echo -e "${YELLOW}N'oubliez pas de configurer vos fichiers .env avec vos clés API et autres paramètres.${NC}"
-echo -e "${YELLOW}Vous pouvez accéder à l'application via https://claude-rasp.local si vous avez configuré ce nom d'hôte.${NC}"
+
+if [ "$DEV_ENVIRONMENT" = "true" ]; then
+    echo -e "${YELLOW}Les outils de développement (black, isort, flake8, pytest) ont été installés.${NC}"
+    echo -e "${YELLOW}Vous pouvez les utiliser avec 'python -m black', 'python -m isort', etc.${NC}"
+else
+    echo -e "${YELLOW}Pour installer les outils de développement, relancez le script avec l'option --dev${NC}"
+fi
+
+echo -e "${YELLOW}Vous pouvez accéder à l'application via https://claude.letsq.xyz${NC}"
