@@ -18,6 +18,12 @@ class Settings(BaseSettings):
         "http://localhost:8080",
         "http://localhost:3000"
     ]
+    
+    # Debug mode
+    DEBUG: bool = os.getenv("DEBUG", "False").lower() in ("true", "1", "t")
+    
+    # Allowed hosts
+    ALLOWED_HOSTS: str = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1")
 
     @field_validator("BACKEND_CORS_ORIGINS", mode="before")
     def assemble_cors_origins(cls, v: Union[str, List[str]]) -> Union[List[str], str]:
