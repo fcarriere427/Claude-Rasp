@@ -6,7 +6,7 @@ import os
 from app.core.config import settings
 
 # Déterminer le chemin racine du projet
-PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), '..'))
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), '..', '..'))
 
 # Construire le chemin de la base de données
 if settings.DATABASE_URL.startswith('sqlite:///./storage/'):
