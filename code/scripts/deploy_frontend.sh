@@ -43,6 +43,8 @@ print_success "Frontend construit"
 print_step "Déploiement vers /var/www"
 sudo mkdir -p /var/www/claude.letsq.xyz
 sudo cp -r dist/* /var/www/claude.letsq.xyz/
+# S'assurer que favicon.ico est bien copié
+sudo cp -f public/favicon.ico /var/www/claude.letsq.xyz/
 sudo chown -R www-data:www-data /var/www/claude.letsq.xyz/
 print_success "Frontend déployé vers /var/www/claude.letsq.xyz"
 

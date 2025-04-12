@@ -95,6 +95,20 @@ print_success "Dépendances frontend mises à jour"
 npm run build
 print_success "Frontend construit"
 
+# Copier les fichiers vers /var/www
+print_step "Déploiement vers /var/www"
+sudo mkdir -p /var/www/claude.letsq.xyz
+sudo cp -r dist/* /var/www/claude.letsq.xyz/
+# S'assurer que favicon.ico est bien copié
+sudo cp -f public/favicon.ico /var/www/claude.letsq.xyz/
+sudo chown -R www-data:www-data /var/www/claude.letsq.xyz/
+print_success "Frontend déployé vers /var/www/claude.letsq.xyz"
+
+# Recharger Nginx
+print_step "Rechargement de Nginx"
+sudo systemctl reload nginx
+print_success "Nginx rechargé"
+
 # Redémarrage des services
 print_step "Redémarrage des services"
 sudo systemctl restart claude-rasp-backend.service
