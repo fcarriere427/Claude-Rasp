@@ -74,7 +74,7 @@ cd "$BACKEND_DIR" || print_error "Impossible d'accéder au répertoire backend"
 source .venv/bin/activate
 
 # Mise à jour des dépendances
-poetry install
+pip install -r requirements.txt
 print_success "Dépendances backend mises à jour"
 
 # Exécution des migrations de base de données (si Alembic est utilisé)

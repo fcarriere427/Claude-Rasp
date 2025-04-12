@@ -19,6 +19,7 @@
 | 07/04/2025 | Phase 0 | Configuration MCP | ✅ | Configuration YAML pour les outils MCP (Brave Search) |
 | 07/04/2025 | Phase 0 | Préparation des fichiers .env | ✅ | Création des templates .env pour backend et frontend |
 | 12/04/2025 | Phase 1 | Évaluation de l'avancement | ✅ | Mise à jour du suivi de projet pour refléter l'état réel |
+| 12/04/2025 | Phase 1 | Simplification de la structure | ✅ | Suppression du fichier pyproject.toml et utilisation exclusive des fichiers requirements.txt |
 
 ## Phase 0: Préparation et setup (1-2 semaines) - **TERMINÉE**
 
