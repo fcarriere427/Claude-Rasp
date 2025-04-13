@@ -23,6 +23,17 @@ def get_users(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.User).offset(skip).limit(limit).all()
 
 
+def count_users(db: Session) -> int:
+    """Compte le nombre d'utilisateurs dans la base de données"""
+    return db.query(models.User).count()
+
+
+def delete_all_users(db: Session) -> None:
+    """Supprime tous les utilisateurs de la base de données (pour les tests uniquement)"""
+    db.query(models.User).delete()
+    db.commit()
+
+
 def create_user(db: Session, user_in: schemas.UserCreate) -> models.User:
     db_user = models.User(
         username=user_in.username,
@@ -39,7 +50,7 @@ def create_user(db: Session, user_in: schemas.UserCreate) -> models.User:
 
 
 def update_user(db: Session, user: models.User, user_in: schemas.UserUpdate) -> models.User:
-    update_data = user_in.dict(exclude_unset=True)
+    update_data = user_in.model_dump(exclude_unset=True)
     if "password" in update_data and update_data["password"]:
         update_data["hashed_password"] = get_password_hash(update_data["password"])
         del update_data["password"]

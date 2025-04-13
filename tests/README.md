@@ -1,3 +1,13 @@
+## Configuration du backend pour les tests
+
+Pour que les tests fonctionnent correctement, assurez-vous que votre backend expose les endpoints de test nécessaires. Ces endpoints sont automatiquement activés lorsque la variable d'environnement `ENVIRONMENT` n'est pas définie à "production".
+
+Important : Dans l'environnement de test, le backend expose des endpoints spéciaux pour :
+1. Créer le premier utilisateur admin (`/test/create-first-user`)  
+2. Réinitialiser la base de données (`/test/reset-database`)
+
+Ces endpoints ne sont pas disponibles en production.
+
 # Tests pour l'application Claude API sur Raspberry Pi
 
 Ce répertoire contient les tests pour l'application Claude API.

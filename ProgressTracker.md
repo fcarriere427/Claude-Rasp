@@ -26,6 +26,7 @@
 | 12/04/2025 | Phase 1 | Simplification de la structure | ✅ | Suppression du fichier pyproject.toml et utilisation exclusive des fichiers requirements.txt |
 | 12/04/2025 | Phase 1 | Implémentation de l'authentification | ✅ | Création des modèles, schémas, services et API pour l'authentification |
 | 13/04/2025 | Phase 1 | Mise en place des tests API | ✅ | Création de l'infrastructure de test API avec tests d'authentification |
+| 13/04/2025 | Phase 1 | Ajout d'endpoints de test spéciaux | ✅ | Endpoints pour créer le premier utilisateur et réinitialiser la base de données |
 
 ## Phase 0: Préparation et setup (1-2 semaines) - **TERMINÉE**
 
